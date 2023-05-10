@@ -5,4 +5,6 @@ module com.plapa_kermit.gestion_bar {
 
     opens com.plapa_kermit.gestion_bar to javafx.fxml;
     exports com.plapa_kermit.gestion_bar;
+    exports com.plapa_kermit.gestion_bar.Model;
+    opens com.plapa_kermit.gestion_bar.Model to javafx.fxml;
 }
