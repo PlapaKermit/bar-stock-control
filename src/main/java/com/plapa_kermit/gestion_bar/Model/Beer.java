@@ -2,18 +2,20 @@ package com.plapa_kermit.gestion_bar.Model;
 
 
 public class Beer {
-    //Can be associate to brewery
-    private Brewery brewery;
     private String name;
-    private String id;
+    private int id;
     private double aclohol;
     private double price;
+    private int quantity;
+    private String description;
 
 
-    public void new_Beer(String name, String id, double aclohol, double price) {
+    public Beer(String name, int id, double aclohol, double price, int quantity, String description) {
         this.name = name;
         this.id = id;
         this.aclohol = aclohol;
         this.price = price;
+        this.quantity = quantity;
+        this.description = description;
     }
 }
