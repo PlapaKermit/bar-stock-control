@@ -4,18 +4,62 @@ package com.plapa_kermit.gestion_bar.Model;
 public class Beer {
     private String name;
     private int id;
-    private double aclohol;
+    private String type;
+    private double alcohol;
     private double price;
-    private int quantity;
-    private String description;
+    private int stock;
 
 
-    public Beer(String name, int id, double aclohol, double price, int quantity, String description) {
+    public Beer(String name , String type, double alcohol, double price, int stock) {
         this.name = name;
-        this.id = id;
-        this.aclohol = aclohol;
+        this.type = type;
+        this.alcohol = alcohol;
         this.price = price;
-        this.quantity = quantity;
-        this.description = description;
+        this.stock = stock;
+    }
+
+    public void setQuantity(int stock) {
+        this.stock = stock;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public double getAlcohol() {
+        return alcohol;
+    }
+
+    public void setAlcohol(double alcohol) {
+        this.alcohol = alcohol;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getStock() {
+        return stock;
     }
 }

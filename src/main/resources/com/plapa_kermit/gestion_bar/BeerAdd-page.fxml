@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="144.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.plapa_kermit.gestion_bar.BeerAddPageController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="33.0" prefWidth="600.0" text="Ajouté une bière" />
+            <HBox alignment="CENTER">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Nom" />
+                        <TextField fx:id="BeerName" />
+                     </children></VBox>
+                  <VBox alignment="CENTER" prefHeight="102.0" prefWidth="118.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="BeerType" />
+                        <ComboBox fx:id="BeerType" prefHeight="25.0" prefWidth="118.0" promptText="BeerType">
+                           <items>
+                            <FXCollections fx:factory="observableArrayList">
+                              <String fx:value="Blonde" />
+                              <String fx:value="Brune" />
+                              <String fx:value="Noire" />
+                              <String fx:value="Blanche" />
+                              <String fx:value="Ambrée" />
+                              <String fx:value="Triple" />
+                              <String fx:value="IPA" />
+                            </FXCollections>
+                          </items>
+                        </ComboBox>
+                     </children></VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="\% D'alcool" />
+                        <TextField fx:id="BeerAlcohol" />
+                     </children></VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Prix" />
+                        <TextField fx:id="BeerPrice" />
+                     </children></VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" text="Stock" />
+                        <TextField fx:id="BeerStock" />
+                     </children></VBox>
+               </children></HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="SaveButton" mnemonicParsing="false" onAction="#onClickSave" text="Save" />
+                  <Button mnemonicParsing="false" text="Back" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

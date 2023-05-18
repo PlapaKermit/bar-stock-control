@@ -1,6 +1,5 @@
 package com.plapa_kermit.gestion_bar;
 
-//Si possible trier dans des packages Vue, Model , Controller
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,22 +24,13 @@ public class MainPageController {
             // User has not selected a role, so do nothing
             return;
         }
-
-        String resource;
-        switch (selectedRole) {
-            case "Client":
-                resource = "Achat-page.fxml";
-                break;
-            case "Livreur":
-                resource = "Delivery-page.fxml";
-                break;
-            case "Gérant":
-                resource = "Management-page.fxml";
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid role selected: " + selectedRole);
-        }
-
+        String resource = switch (selectedRole) {
+            case "Client" -> "List-page.fxml";
+            case "Livreur" -> "Delivery-page.fxml";
+            case "Gerant" -> "Management-page.fxml";
+            default -> throw new IllegalArgumentException("Invalid role selected: " + selectedRole);
+        };
+        //System.out.println("Loading resource: " + resource);
         Parent root = FXMLLoader.load(getClass().getResource(resource));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

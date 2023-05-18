@@ -20,7 +20,7 @@
                 <FXCollections fx:factory="observableArrayList">
                   <String fx:value="Client" />
                   <String fx:value="Livreur" />
-                  <String fx:value="Gérant" />
+                  <String fx:value="Gerant" />
                 </FXCollections>
               </items>
             </ComboBox>
