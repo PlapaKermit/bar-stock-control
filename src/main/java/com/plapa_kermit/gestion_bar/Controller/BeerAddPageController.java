@@ -1,4 +1,4 @@
-package com.plapa_kermit.gestion_bar;
+package com.plapa_kermit.gestion_bar.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -44,11 +44,19 @@ public class BeerAddPageController {
         BeerList.saveToCSV("beerlist.csv");
 
         //Go back to the previous page
-        Parent root = FXMLLoader.load(getClass().getResource("Management-page.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/plapa_kermit/gestion_bar/Management-page.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
 
+    }
+    @FXML
+    public void onClickBack(ActionEvent actionEvent) throws IOException {
+       Parent root = FXMLLoader.load(getClass().getResource("/com/plapa_kermit/gestion_bar/Management-page.fxml"));
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 }

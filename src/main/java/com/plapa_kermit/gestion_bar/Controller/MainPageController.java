@@ -1,4 +1,4 @@
-package com.plapa_kermit.gestion_bar;
+package com.plapa_kermit.gestion_bar.Controller;
 
 
 import javafx.event.ActionEvent;
@@ -11,6 +11,7 @@ import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class MainPageController {
@@ -25,13 +26,13 @@ public class MainPageController {
             return;
         }
         String resource = switch (selectedRole) {
-            case "Client" -> "List-page.fxml";
-            case "Livreur" -> "Delivery-page.fxml";
-            case "Gerant" -> "Management-page.fxml";
+            case "Client" -> "/com/plapa_kermit/gestion_bar/List-page.fxml";
+            case "Livreur" -> "/com/plapa_kermit/gestion_bar/Delivery-page.fxml";
+            case "Gerant" -> "/com/plapa_kermit/gestion_bar/Management-page.fxml";
             default -> throw new IllegalArgumentException("Invalid role selected: " + selectedRole);
         };
         //System.out.println("Loading resource: " + resource);
-        Parent root = FXMLLoader.load(getClass().getResource(resource));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(resource)));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);

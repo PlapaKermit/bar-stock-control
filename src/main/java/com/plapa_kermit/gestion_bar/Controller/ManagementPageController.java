@@ -1,4 +1,4 @@
-package com.plapa_kermit.gestion_bar;
+package com.plapa_kermit.gestion_bar.Controller;
 
 import com.plapa_kermit.gestion_bar.Model.Beer;
 import com.plapa_kermit.gestion_bar.Model.BeerList;
@@ -30,7 +30,6 @@ public class ManagementPageController {
     private TableColumn<Beer, Double> beerPriceColumn;
     @FXML
     private TableColumn<Beer, Integer> beerStockColumn;
-    private BeerList beerList;
 
 
     public void onSupButton(ActionEvent actionEvent) {
@@ -44,7 +43,7 @@ public class ManagementPageController {
         stage.setScene(scene);
         stage.show();*/
 
-        Parent root = FXMLLoader.load(getClass().getResource("BeerAdd-page.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/plapa_kermit/gestion_bar/BeerAdd-page.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -54,7 +53,7 @@ public class ManagementPageController {
 
     @FXML
     public void onBackButton(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("main-page.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/com/plapa_kermit/gestion_bar/Main-page.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -75,10 +74,9 @@ public class ManagementPageController {
         beerList.loadFromCSV("beerlist.csv");
 
         // Convert the ArrayList to an ObservableList
-        ObservableList<Beer> beerData = FXCollections.observableArrayList(beerList.getBeerList());
+        ObservableList<Beer> beerData = FXCollections.observableArrayList(beerList.getBeersList());
 
         // Set the ObservableList as the data source for the TableView
         beerTable.setItems(beerData);
     }
-
 }

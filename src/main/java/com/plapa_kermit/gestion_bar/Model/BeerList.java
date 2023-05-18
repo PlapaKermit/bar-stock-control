@@ -1,5 +1,7 @@
 package com.plapa_kermit.gestion_bar.Model;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.io.*;
 
@@ -22,26 +24,51 @@ public class BeerList {
         }
     }
 
-    public ArrayList<Beer> getBeerList() {
+    public ArrayList<Beer> getBeersList() {
         return beerList;
     }
 
-    public void setBeerList(ArrayList<Beer> beerList) {
+    public void setBeersList(ArrayList<Beer> beerList) {
         this.beerList = beerList;
     }
 
     public void saveToCSV(String filename) {
-        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
-            writer.println("Name, Type, Alcohol, Price, Quantity"); // Write header line
+    try {
+        boolean fileExists = Files.exists(Paths.get(filename));
+        PrintWriter writer = new PrintWriter(new FileWriter(filename, true));
 
-            for (Beer beer : beerList) {
-                writer.println(beer.getName() + ","  + beer.getType() +
+        // Check if the file exists and it's empty, then write the header line
+        if (!fileExists || Files.size(Paths.get(filename)) == 0) {
+            writer.println("Name, Type, Alcohol, Price, Quantity"); // Write header line
+        }
+
+        for (Beer beer : beerList) {
+            // Check if the beer with the same name already exists in the file
+            boolean beerExists = false;
+            if (fileExists) {
+                try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        if (line.startsWith(beer.getName() + ",")) {
+                            beerExists = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            // If the beer doesn't exist, write it to the CSV file
+            if (!beerExists) {
+                writer.println(beer.getName() + "," + beer.getType() +
                         "," + beer.getAlcohol() + "," + beer.getPrice() + "," + beer.getStock());
             }
-        } catch (IOException e) {
-            System.err.println("Error saving beer list to CSV: " + e.getMessage());
         }
+
+        writer.close();
+    } catch (IOException e) {
+        System.err.println("Error saving beer list to CSV: " + e.getMessage());
     }
+}
 
     public void loadFromCSV(String filename) {
     //beerList.clear();  // Clear the existing beer list

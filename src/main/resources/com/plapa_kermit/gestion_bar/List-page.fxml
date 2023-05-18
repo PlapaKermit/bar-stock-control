@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="beerBorderPane" prefHeight="400.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.plapa_kermit.gestion_bar.ClientPageController">
+<BorderPane  prefHeight="400.0" prefWidth="716.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.plapa_kermit.gestion_bar.Controller.ClientPageController">
     <top>
         <Label text="Beer List" />
     </top>
@@ -21,7 +21,7 @@
     <bottom>
         <HBox alignment="CENTER_RIGHT" spacing="10.0" BorderPane.alignment="CENTER">
          <Button alignment="TOP_CENTER" mnemonicParsing="false" text="Back" onAction="#onBackButton" />
-            <Button fx:id="CommandeButton" onAction="#onCommandeButton" text="Commande" />
+            <Button  onAction="#onCommandeButton" text="Commande" />
         </HBox>
     </bottom>
 </BorderPane>

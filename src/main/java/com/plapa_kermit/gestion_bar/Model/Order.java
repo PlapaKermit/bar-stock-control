@@ -5,14 +5,14 @@ public class Order {
     private int orderId;
     private String clientName;
     private String orderDate;
-    private List<Beer> beerList;
+    private List<OrderItem> orderItems;
     private String deliveryStatus;
 
-    public Order(int orderId, String clientName, String orderDate, List<Beer> beerList, String deliveryStatus) {
+    public Order(int orderId, String clientName, String orderDate, List<OrderItem> orderItems, String deliveryStatus) {
         this.orderId = orderId;
         this.clientName = clientName;
         this.orderDate = orderDate;
-        this.beerList = beerList;
+        this.orderItems = orderItems;
         this.deliveryStatus = deliveryStatus;
     }
 
@@ -28,12 +28,12 @@ public class Order {
         return orderDate;
     }
 
-    public List<Beer> getBeerList() {
-        return beerList;
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
     }
 
-    public void setBeerList(List<Beer> beerList) {
-        this.beerList = beerList;
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
     }
 
     public String getDeliveryStatus() {
@@ -44,3 +44,4 @@ public class Order {
         this.deliveryStatus = deliveryStatus;
     }
 }
+
