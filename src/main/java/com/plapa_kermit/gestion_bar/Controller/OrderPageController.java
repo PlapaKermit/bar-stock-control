@@ -2,6 +2,8 @@ package com.plapa_kermit.gestion_bar.Controller;
 
 import com.plapa_kermit.gestion_bar.Model.Beer;
 import com.plapa_kermit.gestion_bar.Model.BeerList;
+import com.plapa_kermit.gestion_bar.Model.OrderItem;
+import com.plapa_kermit.gestion_bar.Model.Order;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,13 +24,34 @@ public class OrderPageController {
     @FXML
     private TextField StockNeeded;
     @FXML
-     private ComboBox<String> comboBox;
+    private ComboBox<String> comboBox;
+    @FXML
+    private TextField Name;
 
     @FXML
     public void onClickCommande(ActionEvent actionEvent) throws IOException {
         //Get info
         String stockNeeded = StockNeeded.getText();
         String selectedBeer = comboBox.getValue();
+        String name = Name.getText();
+
+        //Create order
+        BeerList beerList = new BeerList();
+        beerList.loadFromCSV("beerlist.csv");
+        ArrayList<Beer> beers = beerList.getBeersList();
+        ArrayList<String> beerNames = new ArrayList<>();
+        for (Beer beer : beers) {
+            beerNames.add(beer.getName());
+        }
+        Beer beer = beers.get(beerNames.indexOf(selectedBeer));
+        int quantity = Integer.parseInt(stockNeeded);
+        OrderItem orderItem = new OrderItem(beer, quantity);
+        ArrayList<OrderItem> orderItems = new ArrayList<>();
+        orderItems.add(orderItem);
+        Order order = new Order(name, "2020-12-12", orderItems, "En cours");
+        order.saveToCSV("orders.csv");
+
+
     }
     @FXML
     public void onClickBack(ActionEvent actionEvent) throws IOException {

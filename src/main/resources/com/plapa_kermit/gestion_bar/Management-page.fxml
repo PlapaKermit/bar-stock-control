@@ -20,7 +20,7 @@
     </center>
     <bottom>
         <HBox alignment="CENTER_RIGHT" spacing="10.0" BorderPane.alignment="CENTER">
-         <Button alignment="TOP_CENTER" mnemonicParsing="false" text="Back" onAction="#onBackButton" />
+            <Button alignment="TOP_CENTER" mnemonicParsing="false" text="Back" onAction="#onBackButton" />
             <Button  onAction="#onMajButton" text="Mise à Jour" />
             <Button  onAction="#onSupButton" text="Supprimée" />
             <Button  onAction="#onAddButton" text="Ajoutée" />

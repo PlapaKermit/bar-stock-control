@@ -2,6 +2,7 @@ package com.plapa_kermit.gestion_bar.Controller;
 
 import com.plapa_kermit.gestion_bar.Model.Beer;
 import com.plapa_kermit.gestion_bar.Model.BeerList;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -32,8 +33,7 @@ public class ManagementPageController {
     private TableColumn<Beer, Integer> beerStockColumn;
 
 
-    public void onSupButton(ActionEvent actionEvent) {
-    }
+   
     @FXML
     public void onAddButton(ActionEvent actionEvent) throws IOException {
         //Open a new page to add a new beer :
@@ -42,7 +42,6 @@ public class ManagementPageController {
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.show();*/
-
         Parent root = FXMLLoader.load(getClass().getResource("/com/plapa_kermit/gestion_bar/BeerAdd-page.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -69,6 +68,7 @@ public class ManagementPageController {
         beerAlcoholColumn.setCellValueFactory(new PropertyValueFactory<>("alcohol"));
         beerPriceColumn.setCellValueFactory(new PropertyValueFactory<>("price"));
         beerStockColumn.setCellValueFactory(new PropertyValueFactory<>("stock"));
+
         // Load data from CSV file
         BeerList beerList = new BeerList();
         beerList.loadFromCSV("beerlist.csv");
@@ -78,5 +78,8 @@ public class ManagementPageController {
 
         // Set the ObservableList as the data source for the TableView
         beerTable.setItems(beerData);
+    }
+
+    public void onSupButton(ActionEvent event) {
     }
 }
