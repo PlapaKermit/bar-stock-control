@@ -60,6 +60,7 @@ public class ManagementPageController {
     }
 
     public void onMajButton(ActionEvent event) {
+        initialize();
     }
 
     public void initialize() {
@@ -81,5 +82,19 @@ public class ManagementPageController {
     }
 
     public void onSupButton(ActionEvent event) {
+        // Get the selected item
+        Beer selectedBeer = beerTable.getSelectionModel().getSelectedItem();
+        System.out.println(selectedBeer);
+
+        // Remove the selected item from the ArrayList
+        BeerList beerList = new BeerList();
+        beerList.loadFromCSV("beerlist.csv");
+        beerList.getBeersList().remove(selectedBeer);
+
+        // Save the ArrayList to the CSV file
+        beerList.saveToCSV("beerlist.csv");
+
+        // Refresh the TableView
+        initialize();
     }
 }
