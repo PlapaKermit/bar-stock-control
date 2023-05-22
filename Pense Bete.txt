@@ -1,0 +1,70 @@
+Structure d'un projet en Java :
+    Un projet Java est généralement composé de plusieurs classes qui interagissent entre elles pour réaliser une
+    fonctionnalité spécifique. Chaque classe est un bloc de code qui définit les caractéristiques et les comportements
+    d'un objet particulier.
+
+Une classe :
+    Une classe en Java est un modèle ou un plan à partir duquel les objets sont créés. Elle définit les variables
+    (attributs) et les méthodes (comportements) communs à tous les objets de cette classe. Par exemple,
+    si vous avez une classe "Voiture", elle peut avoir des attributs tels que "couleur" et "marque",
+     ainsi que des méthodes telles que "accélérer" et "freiner".
+
+Un objet :
+    Un objet est une instance d'une classe. Il représente une entité concrète basée sur la structure et les comportements
+    définis dans la classe. Par exemple, si vous créez un objet à partir de la classe "Voiture",
+    vous pouvez l'appeler "maVoiture" et lui attribuer une couleur spécifique, une marque, etc.
+
+Instanciation et new :
+    L'instanciation est le processus de création d'un objet à partir d'une classe. En Java,
+    vous utilisez le mot-clé "new" suivi du nom de la classe pour instancier un objet.
+    Par exemple, pour créer une instance de la classe "Voiture", vous pouvez écrire :
+    "Voiture maVoiture = new Voiture();". Cela crée un nouvel objet de type "Voiture" et l'assigne à la variable "maVoiture".
+
+Constructeur :
+    Un constructeur est une méthode spéciale d'une classe utilisée pour initialiser les objets créés à partir de cette classe.
+    Il porte le même nom que la classe et n'a pas de type de retour. Lorsque vous instanciez un objet avec le mot-clé "new",
+     le constructeur correspondant est appelé automatiquement. Vous pouvez définir des constructeurs personnalisés
+     pour initialiser les attributs de l'objet selon vos besoins.
+
+Le mot-clé super :
+    Le mot-clé "super" est utilisé en Java pour accéder aux membres (attributs et méthodes) de la classe parente.
+    Il est utilisé principalement dans les classes dérivées (sous-classes) pour appeler le constructeur de la classe parente
+    ou pour accéder à ses méthodes et attributs.
+
+Le mot-clé static :
+    Le mot-clé "static" est utilisé pour déclarer des membres (attributs et méthodes)
+    qui appartiennent à la classe elle-même plutôt qu'à une instance spécifique de la classe. Les membres statiques
+    sont partagés par toutes les instances de la classe et peuvent être appelés sans créer d'objet.
+
+Algorithme et code :
+Un algorithme est une séquence d'instructions logiques et ordonnées qui résolvent un problème spécifique.
+En Java, le code d'un algorithme est écrit dans les méthodes d'une classe. Vous pouvez définir des méthodes pour effectuer
+ des opérations spécifiques et utiliser ces méthodes dans le reste du code pour exécuter l'algorithme souhaité.
+
+Exécution d'un projet Java :
+    Lors de l'exécution d'un projet Java, la méthode spécifique appelée "public static void main(String[] args)"
+    est exécutée en premier. C'est le point d'entrée du programme. À partir de là, le code s'exécute de manière séquentielle,
+    ligne par ligne, à moins qu'il ne rencontre des structures de contrôle (comme des boucles ou des instructions conditionnelles)
+    qui peuvent modifier le flux d'exécution.
+
+Relations en Java :
+    En Java, les relations d'héritage, d'association, de composition et d'agrégation sont traduites à l'aide de classes et d'objets.
+
+    - Héritage : La relation d'héritage est établie en utilisant le mot-clé "extends". Une classe peut hériter
+    d'une autre classe, ce qui signifie qu'elle acquiert les attributs et les méthodes de la classe parente.
+    Par exemple, vous pouvez avoir une classe "VoitureDeSport" qui étend la classe "Voiture".
+
+    - Association : L'association est établie lorsque deux classes sont liées d'une manière spécifique,
+    généralement par l'intermédiaire de références d'objet. Par exemple, une classe "Personne"
+    peut avoir une référence à une classe "Adresse", indiquant ainsi une association entre les deux.
+
+    - Composition : La composition est une relation plus forte que l'association,
+    où une classe est composée d'autres classes et ne peut exister indépendamment. Par exemple,
+    une classe "Moteur" peut être composée dans une classe "Voiture". Si la voiture est détruite, le moteur le sera également.
+
+    - Agrégation : L'agrégation est une relation plus faible que la composition,
+     où une classe peut exister indépendamment des autres classes. Par exemple,
+     une classe "Université" peut avoir une agrégation avec une classe "Étudiant",
+     car un étudiant peut exister indépendamment de l'université.
+
+    Ces relations sont établies en utilisant des références d'objet appropriées dans les classes et en instanciant les objets nécessaires selon les besoins.

@@ -52,7 +52,7 @@
                </children></HBox>
             <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="SaveButton" mnemonicParsing="false" onAction="#onClickSave" text="Save" />
+                  <Button mnemonicParsing="false" onAction="#onClickSave" text="Save" />
                   <Button mnemonicParsing="false" text="Back" onAction="#onClickBack" />
                </children>
             </HBox>
