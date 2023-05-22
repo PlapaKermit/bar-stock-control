@@ -36,12 +36,6 @@ public class ManagementPageController {
    
     @FXML
     public void onAddButton(ActionEvent actionEvent) throws IOException {
-        //Open a new page to add a new beer :
-        /*Parent root = FXMLLoader.load(getClass().getResource("BeerAdd-page.fxml"));
-        Scene scene = new Scene(root);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();*/
         Parent root = FXMLLoader.load(getClass().getResource("/com/plapa_kermit/gestion_bar/BeerAdd-page.fxml"));
         Scene scene = new Scene(root);
         Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -59,9 +53,9 @@ public class ManagementPageController {
         stage.show();
     }
 
-    public void onMajButton(ActionEvent event) {
-        initialize();
-    }
+//    public void onMajButton(ActionEvent event) {
+//        initialize();
+//    }
 
     public void initialize() {
         beerNameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -73,7 +67,6 @@ public class ManagementPageController {
         // Load data from CSV file
         BeerList beerList = new BeerList();
         beerList.loadFromCSV("beerlist.csv");
-
         // Convert the ArrayList to an ObservableList
         ObservableList<Beer> beerData = FXCollections.observableArrayList(beerList.getBeersList());
 
@@ -84,12 +77,12 @@ public class ManagementPageController {
     public void onSupButton(ActionEvent event) {
         // Get the selected item
         Beer selectedBeer = beerTable.getSelectionModel().getSelectedItem();
-        System.out.println(selectedBeer);
 
         // Remove the selected item from the ArrayList
         BeerList beerList = new BeerList();
         beerList.loadFromCSV("beerlist.csv");
-        beerList.getBeersList().remove(selectedBeer);
+        beerList.deleteBeerByName("beerlist.csv",selectedBeer.getName());
+        //beerList.getBeersList().remove(selectedBeer.getName());
 
         // Save the ArrayList to the CSV file
         beerList.saveToCSV("beerlist.csv");

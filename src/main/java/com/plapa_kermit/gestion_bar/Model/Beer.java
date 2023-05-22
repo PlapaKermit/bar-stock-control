@@ -25,4 +25,6 @@ public class Beer extends Beverage {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+    
 }

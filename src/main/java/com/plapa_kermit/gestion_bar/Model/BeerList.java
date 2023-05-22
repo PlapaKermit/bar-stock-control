@@ -96,45 +96,48 @@ public class BeerList {
             System.err.println("Error parsing numeric value in CSV: " + e.getMessage());
         }
     }
+
     public void deleteBeerByName(String filename, String beerName) {
-        ArrayList<Beer> updatedList = new ArrayList<>();
+    ArrayList<Beer> updatedList = new ArrayList<>();
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                String[] beerData = line.split(",");
-                if (beerData.length == 5) {
-                    String name = beerData[0].trim();
-                    if (!name.equals(beerName)) {
-                        String type = beerData[1].trim();
-                        double alcohol = Double.parseDouble(beerData[2].trim());
-                        double price = Double.parseDouble(beerData[3].trim());
-                        int stock = Integer.parseInt(beerData[4].trim());
+    try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+        String line = reader.readLine(); // Read the header line and discard it
 
-                         Beer beer = new Beer(name, type, alcohol, price, stock);
-                        updatedList.add(beer);
-                    }
-                } else {
-                    System.err.println("Invalid CSV format: " + line);
+        while ((line = reader.readLine()) != null) {
+            String[] beerData = line.split(",");
+            if (beerData.length == 5) {
+                String name = beerData[0].trim();
+                if (!name.equals(beerName)) {
+                    String type = beerData[1].trim();
+                    double alcohol = Double.parseDouble(beerData[2].trim());
+                    double price = Double.parseDouble(beerData[3].trim());
+                    int quantity = Integer.parseInt(beerData[4].trim());
+
+                    Beer beer = new Beer(name,  type, alcohol, price, quantity);
+                    updatedList.add(beer);
                 }
+            } else {
+                System.err.println("Invalid CSV format: " + line);
             }
-        } catch (IOException e) {
-            System.err.println("Error deleting beer from CSV: " + e.getMessage());
-            return;  // Exit the method if an error occurs
-        } catch (NumberFormatException e) {
-            System.err.println("Error parsing numeric value in CSV: " + e.getMessage());
-            return;  // Exit the method if an error occurs
         }
-
-        try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
-            for (Beer beer : updatedList) {
-                writer.println(beer.getName() + "," + beer.getType() +
-                        "," + beer.getAlcohol() + "," + beer.getPrice() + "," + beer.getStock());
-            }
-        } catch (IOException e) {
-            System.err.println("Error updating beer list in CSV: " + e.getMessage());
-        }
+    } catch (IOException e) {
+        System.err.println("Error deleting beer from CSV: " + e.getMessage());
+        return;  // Exit the method if an error occurs
+    } catch (NumberFormatException e) {
+        System.err.println("Error parsing numeric value in CSV: " + e.getMessage());
+        return;  // Exit the method if an error occurs
     }
+
+    try (PrintWriter writer = new PrintWriter(new FileWriter(filename))) {
+        for (Beer beer : updatedList) {
+            writer.println(beer.getName() + "," + beer.getType() +
+                    "," + beer.getAlcohol() + "," + beer.getPrice() + "," + beer.getStock());
+        }
+    } catch (IOException e) {
+        System.err.println("Error updating beer list in CSV: " + e.getMessage());
+    }
+}
+
 
 }
 
